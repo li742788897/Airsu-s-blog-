@@ -10,22 +10,39 @@
             color: white;
           "
         >
-          <b>arcueid's 小站 </b>
+          <b>有珠珠的日记本 </b>
         </div>
-        <div style="display: flex; width: 100%; justify-content: center;  margin: 23px 0;">
-            <span class="formItem">用户名</span>
-            <div class="tags-content">
-          <input class="tags-input" v-model="username" placeholder="请输入..." />
+        <div
+          style="
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            margin: 23px 0;
+          "
+        >
+          <span class="formItem">用户名</span>
+          <div class="tags-content">
+            <input
+              class="tags-input"
+              v-model="username"
+              placeholder="请输入..."
+            />
+          </div>
+        </div>
+        <div style="display: flex; width: 100%; justify-content: center">
+          <span class="formItem">密码</span>
+          <div class="tags-content">
+            <input
+              class="tags-input"
+              v-model="username"
+              placeholder="请输入..."
+            />
+          </div>
+        </div>
+        <div>
+          <button class="button " @click="login">登录</button>
         </div>
         
-        </div>
-        <div style="display: flex; width: 100%; justify-content: center;">
-            <span class="formItem">密码</span>
-            <div class="tags-content">
-          <input class="tags-input" v-model="username" placeholder="请输入..." />
-        </div>
-        
-        </div>
       </div>
     </div>
     <vue-particles
@@ -46,7 +63,9 @@
       clickMode="push"
     >
     </vue-particles>
+    <div style=" text-align: center;color: #666;font: 12px/1.5 Tahoma,'Microsoft Yahei','Simsun';">© 2023 有珠珠的日记本 <a rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/">辽ICP备2023000401号-1</a>   </div>
   </div>
+
 </template>
 
 <script>
@@ -74,7 +93,16 @@ export default {
       },
     };
   },
+  mounted(){
+    let date1 = new Date("01:00");
+    let date2 = new Date("03:00");
+    console.log(1234);
+    console.log(date1.getTime() > date2.getTime());
+  },
   methods: {
+    login(){
+      this.$router.push('/index')
+    }
     // login() {
     //   this.$refs["userForm"].validate((valid) => {
     //     if (valid) {
@@ -127,7 +155,7 @@ export default {
   text-align: center;
 }
 .tags-content {
-    transform: translate(-3%, -10%);
+  transform: translate(-3%, -10%);
   /* gap: 6px; */
   width: 45%;
   box-sizing: border-box;
@@ -144,19 +172,60 @@ export default {
   cursor: text;
 }
 .tags-input {
-    /* 透明化input框 */
+  /* 透明化input框 */
   border-color: transparent;
-  color:#fff;
+  color: #fff;
   /* 透明化input框北京颜色 */
-  background-color:rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   width: 95%;
   /* 去掉点击后出现的边框 */
   outline: none;
   /* border: 1px solid rgba(0, 0, 0, 0); */
 }
-.formItem{
-    font-size: 14px;
-    margin: 0px 10px;
-    color: #000;
+.formItem {
+  font-size: 14px;
+  margin: 0px 10px;
+  color: #000;
 }
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #4f46e5;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  padding: 20px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 30px;
+  vertical-align:middle;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
 </style>
