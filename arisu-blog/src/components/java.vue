@@ -10,12 +10,24 @@
 </template>
 
 <script>
+import {getlist} from '@/api/api'
 export default {
  data(){
     return {
-        list:[1,2,34,5,6,8],
+        list:[],
     }
- }
+    },
+    mounted(){
+        this.getList();
+    },
+    methods:{
+        getList() {
+            getlist().then(res=>{
+                console.log(213);
+                this.list = res.data.page.list;
+            })
+        }
+    }
 }
 </script>
 

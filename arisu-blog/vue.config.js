@@ -27,18 +27,24 @@ module.exports = defineConfig({
         }
       ]
     },
-    // plugins: [
-    //   AutoImport({
-    //     resolvers: [
-    //       ElementPlusResolver({
-    //         exclude: new RegExp(/^(?!.*loading-directive).*$/), //修改此处
-    //       }),
-    //     ],
-    //   }),
-    //   // Components({
-    //   //   resolvers: [ElementPlusResolver()],
-    //   // }),
-    // ],
+    devServer: {
+      // disableHostCheck: true,
+      proxy: {
+        // 连接本地请使用这个
+        '/blog': {
+          target: 'http://kuonnjiarisu.top',
+          changeOrigin: true,
+          // pathRewrite: {
+          //   '^/leaveOverTime': '/api/leave-overtime/v1',
+          // },
+        },
+        // 连接测试使用这个
+        // '/blog': {
+        //   target: 'http://kuonnjiarisu.top',
+        //   changeOrigin: true
+        // }
+      },
+    },
   }
 })
 
